@@ -96,3 +96,62 @@ If the implementation is hard to explain, it's a bad idea.
 If the implementation is easy to explain, it may be a good idea.
 Namespaces are one honking great idea -- let's do more of those!
 ```
+
+## 03. Data Types in Python
+#### 1. Objects - Mutable and Immutable in Python
+In Python, objects are classified as either mutable or immutable based on whether their state can be changed after creation.
+
+Immutable Objects
+Definition: Objects whose value cannot be changed after they are created.
+Examples: int, float, complex, bool, str (strings), tuple, frozenset, bytes
+
+Key Characteristics:
+- Any modification creates a new object in memory
+- More memory-efficient for fixed values
+- Hashable (can be used as dictionary keys)
+- Thread-safe by nature
+
+Example:
+```
+# Strings are immutable
+name = "Python"
+# name[0] = "J"  # ❌ This would raise an error!
+
+# Modification creates a new object
+new_name = name.upper()
+print(name)      # "Python" (original unchanged)
+print(new_name)  # "PYTHON" (new object)
+
+# Integers are immutable
+x = 10
+print(id(x))  # Some memory address
+x += 5        # This creates a new integer
+print(id(x))  # Different memory address
+```
+
+Mutable Objects
+Definition: Objects whose value can be changed after they are created.
+Examples: list, dict, set, Custom class instances, bytearray
+
+Key Characteristics:
+- Can be modified in-place
+- Changes reflect across all references to the object
+- Not hashable (generally)
+- More memory-efficient for dynamic data
+
+Example:
+```
+# Lists are mutable
+fruits = ["apple", "banana"]
+print(id(fruits))  # Memory address
+
+fruits.append("orange")  # Modify in-place
+print(id(fruits))  # Same memory address
+print(fruits)      # ["apple", "banana", "orange"]
+
+# Dictionaries are mutable
+person = {"name": "Alice", "age": 30}
+person["age"] = 31  # Modify in-place
+person["city"] = "New York"  # Add new key
+print(person)  # {"name": "Alice", "age": 31, "city": "New York"}ß
+```
